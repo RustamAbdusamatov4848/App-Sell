@@ -2,36 +2,31 @@ package com.abdusamatov.appsell.services;
 
 
 import com.abdusamatov.appsell.models.Product;
+import com.abdusamatov.appsell.repositories.ProductRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class ProductService {
-    private final List<Product> productList = new ArrayList<>();
-    private long ID = 0;
 
-    {
-        productList.add(new Product(++ID,"Playstation5","simple playstation",599,"Moscow","Rustam"));
-        productList.add(new Product(++ID,"Yo-Yo","wondering yo-yo toy",4999,"Moscow","Dima"));
-    }
-    public List<Product> list(){
-        return productList;
+    private final ProductRepository repository;
+
+    public List<Product> list(String title){
+        return title != null ? repository.findByTitle(title) : repository.findAll();
     }
     public void saveProduct(Product product){
-        product.setId(++ID);
-        productList.add(product);
+        log.info("Saving new {}",product);
+        repository.save(product);
     }
     public void deleteProduct(Long id){
-        productList.removeIf(product -> product.getId().equals(id));
+        repository.deleteById(id);
     }
 
     public Product getProductById(Long id) {
-        for (Product product : productList) {
-            if (product.getId().equals(id)){
-                return product;
-            }
-        }
-        return null;
+        return repository.findById(id).orElse(null);
     }
 }

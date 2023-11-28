@@ -6,11 +6,20 @@
     <body>
     <h1>APP SELL</h1><hr>
     <h4>Список товаров</h4>
+
+    <form action="/" method="get">
+        Поиск по названию объявления: <input type="text", name="title"><br>
+        <input type="submit" value="Поиск">
+    </form>
+
     <#list products as product>
         <div>
             <p><b>${product.title}</b> ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a></p>
         </div>
+        <#else>
+        <h3>Товаров нет</h3>
     </#list>
+
     <hr>
     <h3>Создать новый товар</h3>
     <form action="/product/create" method="post">
