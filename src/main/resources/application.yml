@@ -3,9 +3,10 @@ spring:
     url: jdbc:mysql://localhost:3306/app-sell
     username: root
     password: uu.qoEW)w2a9147
+  freemarker:
+    expose-request-attributes: true
 
   jpa:
     hibernate:
-      ##?????????? sql ???
       ddl-auto: update
     show-sql: true

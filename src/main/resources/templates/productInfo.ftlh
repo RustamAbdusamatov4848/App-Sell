@@ -1,26 +1,23 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>App sell</title>
+        <title>APP SELL</title>
     </head>
-
     <body>
         <h1>APP SELL</h1><hr>
         <h4>Подробная информация о товаре</h4>
         <#list images as img>
-            <img src="/images/${img.id}" height="100px"><br><br>
-        <#else>
-            <h3 style="color: red">Фотографий нету</h3>
+            <img src="/images/${img.id}" height="60px"/><br><br>
         </#list>
-
         <b>Название товара: </b>${product.title}<br>
         <b>Описание товара: </b>${product.description}<br>
-        <b>Ценна товара: </b>${product.price}<br>
+        <b>Цена: </b>${product.price}<br>
         <b>Город: </b>${product.city}<br>
-        <b>ФИО продавца: </b>${product.author}<br>
-
+        <b>Автор: </b>${product.author}<br>
+        <hr>
         <form action="/product/delete/${product.id}" method="post">
-            <input type="submit" value="Удалить товар">
+            <input type="hidden" name="_csrf" value="${_csrf.token}">
+            <input type="submit" value="Удалить товар"/>
         </form>
     </body>
 </html>
