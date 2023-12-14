@@ -8,5 +8,8 @@ spring:
 
   jpa:
     hibernate:
+#      This value tells Hibernate to update the schema based on the entity model changes detected in the application.
+#      It will add new tables, columns, and constraints, but it will not remove any existing data.
+#      Use this option in development and testing environments where you frequently change your entity classes.
       ddl-auto: update
     show-sql: true

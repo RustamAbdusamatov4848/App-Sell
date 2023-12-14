@@ -43,6 +43,9 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
 
     private LocalDateTime dateOfCreated;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
+    private List<Product> products = new ArrayList<>();
     @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();

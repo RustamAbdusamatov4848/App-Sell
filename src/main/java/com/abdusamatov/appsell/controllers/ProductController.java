@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,16 +21,19 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping("/")
-    public String products(@RequestParam(name = "title",required = false) String title, Model model){
+    public String products(@RequestParam(name = "title",required = false) String title,
+                           Model model,Principal principal){
         model.addAttribute("products",service.list(title));
+        model.addAttribute("user",service.getUserByPrincipal(principal));
+
         return "products";
     }
 
     @PostMapping("/product/create")
-    public String createProduct(@RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2,
-                                @RequestParam("file3") MultipartFile file3, Product product) throws IOException {
+    public String createProduct(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2,
+                                @RequestParam("file3") MultipartFile file3, Product product, Principal principal) throws IOException {
 
-        service.saveProduct(product,file1,file2,file3);
+        service.saveProduct(product,file1,file2,file3,principal);
         return "redirect:/";
     }
     @GetMapping("/product/{id}")
