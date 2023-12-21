@@ -6,11 +6,19 @@
     <body>
         <h1>APP SELL</h1><hr>
         <#if user.email??>
-            <h3>Добро пожаловать <i>${user.getName()}</i>!</h3>
+            <h3>Добро пожаловать,
+                <#if user.isAdmin()> администратор <i>${user.getName()}</i>
+                 <#else>
+                     <i>${user.getName()}</i>!
+                </#if>
+            </h3>
             <form action="/logout" method="post">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
                 <input type="submit" value="Выйти"/>
             </form>
+            <#if user.isAdmin()>
+                <a href="/admin">Панель администратора</a>
+            </#if>
         <#else>
                 <a href="/login">Войти</a><hr>
         </#if>
