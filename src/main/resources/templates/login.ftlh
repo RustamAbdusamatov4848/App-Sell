@@ -75,11 +75,16 @@
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
         }
 
         .login-form input[type="submit"]:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
 
         .registration-link {
