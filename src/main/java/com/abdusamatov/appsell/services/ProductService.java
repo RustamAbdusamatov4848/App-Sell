@@ -9,6 +9,7 @@ import com.abdusamatov.appsell.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -23,9 +24,11 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
 
+    @Transactional(readOnly = true)
     public List<Product> list(String title){
         return title != null ? productRepository.findByTitle(title) : productRepository.findAll();
     }
+    @Transactional
     public void saveProduct(Product product, MultipartFile file1,
                             MultipartFile file2, MultipartFile file3,Principal principal) throws IOException {
 
@@ -38,7 +41,7 @@ public class ProductService {
         productForPreviewImageID.setPreviewImageId(productForPreviewImageID.getImages().get(0).getId());
         productRepository.save(product);
     }
-
+    @Transactional
     public void deleteProduct(Long id){
         productRepository.deleteById(id);
     }
