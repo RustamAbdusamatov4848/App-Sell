@@ -8,14 +8,14 @@ App Sell предоставляет простой и интуитивно по�
 Пользователи могут быстро создавать объявления, добавлять изображения и устанавливать цены.
 
 ## Стек технологий
-Spring Boot
-Spring Data JPA
-Freemarker
-Spring Boot Security
-Spring Boot Web
-MySQL 
-Lombok
-JUnit
+- Spring Boot
+- Spring Data JPA
+- Freemarker
+- Spring Boot Security
+- Spring Boot Web
+- MySQL 
+- Lombok
+- JUnit
 
 ## Установка
 <!-- Доработать -->
