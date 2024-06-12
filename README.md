@@ -1,36 +1,81 @@
 # App Sell
 
-App Sell - веб-приложение для удобного выставления ваших вещей на продажу.
+App Sell provides a simple and intuitive interface for users who want to sell their items.
+Users can quickly create listings, add images, and set prices.
 
-## Описание проекта
+## Technologies
 
-App Sell предоставляет простой и интуитивно понятный интерфейс для пользователей, которые хотят продать свои вещи. 
-Пользователи могут быстро создавать объявления, добавлять изображения и устанавливать цены.
+The project utilizes the following technology stack:
 
-## Стек технологий
-- Spring Boot
-- Spring Data JPA
-- Freemarker
-- Spring Boot Security
-- Spring Boot Web
-- MySQL 
-- Lombok
-- JUnit
+- **Spring Boot**: The primary framework for building web applications in Java.
+- **Spring Data JPA**: For database interaction through object-relational mapping (ORM).
+- **Freemarker**: A template engine for creating dynamic web pages.
+- **Spring Boot Security**: To secure the application.
+- **Spring Boot Web**: For web application development.
+- **MySQL**: A relational database to store information.
+- **Lombok**: A library to reduce boilerplate code (e.g., getters, setters).
+- **JUnit**: A library for unit testing.
 
-## Установка
-<!-- Доработать -->
+## Installation
 
-Для установки и запуска App Sell, выполните следующие шаги:
+1. Clone the repository:
 
-1. Склонируйте репозиторий: `git clone https://github.com/yourusername/app-sell.git`
-2. Перейдите в директорию проекта: `cd app-sell`
-3. Установите зависимости: `npm install`
-4. Запустите приложение: `npm start`
+    ```bash
+    git clone https://github.com/RustamAbdusamatov4848/App-Sell.git
+    ```
 
-## Пример использования
+2. Navigate to the project directory:
 
-1. Зарегистрируйтесь или войдите в свой аккаунт.
-2. Заполните необходимую информацию о продаваемой вещи.
-3. Добавьте изображения вещи.
-4. Установите цену и сохраните объявление.
-5. Нажмите на кнопку "Создать объявление".
+    ```bash
+    cd App-Sell
+    ```
+
+3. Set up the MySQL database:
+
+    - Create a database named `app_sell`.
+    - Update the `src/main/resources/application.properties` file with your database access details.
+
+4. Build the project using Maven:
+
+    ```bash
+    mvn clean install
+    ```
+
+5. Run the application:
+
+    ```bash
+    mvn spring-boot:run
+    ```
+
+## Usage
+
+Once the application is running, it will be available at [http://localhost:8080](http://localhost:8080). You can register, log in, and start listing your items for sale.
+
+## Project Structure
+
+- `src/main/java/com/app/sell` - Main directory containing source code.
+- `src/main/resources/templates` - Directory with Freemarker templates.
+- `src/main/resources/application.properties` - Application configuration file.
+
+## Key Features
+
+- User registration and authentication using Spring Boot Security.
+- User and role management.
+- Adding, editing, and deleting sale listings.
+- Viewing a list of available items for purchase.
+- Unit testing with JUnit.
+
+## Testing
+
+The project includes unit tests for the core components. To run the tests, execute:
+
+```bash
+mvn test
+```
+## Usage
+
+1. Register or log in to your account.
+2. Fill in the required information about the item being sold.
+3. Add images of the item.
+4. Set a price and save your ad.
+5. Click on the "Create ad" button.
